@@ -21,4 +21,4 @@ const productController = async (req, res) => {
   }
 };
 
-export { productController };
+export default productController;

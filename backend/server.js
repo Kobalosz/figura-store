@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { connectDB } from "./config/db.js";
-import { productController } from "./controllers/productController.js";
+import productController from "./controllers/productController.js";
 
 dotenv.config();
 const app = express();
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.send("Server is ready!");
 });
 
-app.post("/api/products", productController());
+app.post("/api/products", productController);
 
 app.listen(port, () => {
   connectDB();
