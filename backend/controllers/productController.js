@@ -81,6 +81,12 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res
+      .status(404)
+      .json({ success: false, message: "Could not find a product by that ID" });
+  }
+
   try {
     await Product.findByIdAndDelete(id);
     res
@@ -90,7 +96,7 @@ const deleteProduct = async (req, res) => {
     console.error();
     res.status(500).json({
       success: false,
-      message: `Could not find product by the id of: ${id}`,
+      message: `Internal server Error during attempt to delete product: ${id}`,
     });
   }
 };
