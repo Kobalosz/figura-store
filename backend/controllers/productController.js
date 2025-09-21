@@ -1,4 +1,4 @@
-import Product from "../../models/product.js";
+import Product from "../models/product.js";
 import mongoose from "mongoose";
 
 const getAllProducts = async (req, res) => {
